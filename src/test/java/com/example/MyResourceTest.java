@@ -10,7 +10,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class MyResourceTest {
 
@@ -30,7 +30,7 @@ public class MyResourceTest {
         // --
         // c.configuration().enable(new org.glassfish.jersey.media.json.JsonJaxbFeature());
 
-        target = c.target(Main.BASE_URI);
+        target = c.target(Main.BASE_URI.replace("0.0.0.0", "127.0.0.1"));
     }
 
     @After
@@ -42,8 +42,12 @@ public class MyResourceTest {
      * Test to see that the message "Got it!" is sent in the response.
      */
     @Test
-    public void testGetIt() {
-        String responseMsg = target.path("myresource").request().get(String.class);
-        assertEquals("Got it!", responseMsg);
+    public void testGetUrl() {
+		String testURL="http://espresso.repubblica.it/palazzo/2015/02/25/news/la-grecia-e-la-suggestione-di-uscire-dall-euro-quanto-e-credibile-lo-scenario-di-una-grexit-1.201217";
+        String responseMsg = target.path("extraction/echo")
+								.queryParam("url", testURL)
+								.request().get(String.class);
+        assertFalse( responseMsg.isEmpty() );
+		System.out.println(responseMsg);
     }
 }
