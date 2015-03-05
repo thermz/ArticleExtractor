@@ -1,6 +1,5 @@
-package com.example;
+package com.tilab.ca.ae;
 
-import com.tilab.ca.ae.Main;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -12,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class MyResourceTest {
+public class ExtractionTest {
 
     private HttpServer server;
     private WebTarget target;
@@ -25,7 +24,7 @@ public class MyResourceTest {
         Client c = ClientBuilder.newClient();
 
         // uncomment the following line if you want to enable
-        // support for JSON in the client (you also have to uncomment
+        // support for JSON in the client (you also have to add
         // dependency on jersey-media-json module in pom.xml and Main.startServer())
         // --
         // c.configuration().enable(new org.glassfish.jersey.media.json.JsonJaxbFeature());
@@ -39,7 +38,7 @@ public class MyResourceTest {
     }
 
     /**
-     * Test to see that the message "Got it!" is sent in the response.
+     * Test to see the text extracted from the URL
      */
     @Test
     public void testGetUrl() {

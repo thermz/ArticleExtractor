@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 /**
  */
 @Path("extraction")
-public class MyResource {
+public class Extraction {
 
     /**
      * Method handling HTTP GET requests. The returned object will be sent
